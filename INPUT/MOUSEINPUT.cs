@@ -9,10 +9,10 @@
 		/// Contains information about a simulated mouse event.
 		/// </summary>
 		[StructLayout(LayoutKind.Sequential)]
-		public struct MOUSEINPUT
+		public struct MouseInput
 		{
-			public int deltaX;
-			public int deltaY;
+			public long deltaX;
+			public long deltaY;
 			public int mouseData;
 			public MouseFlags flags;
 			public uint time;

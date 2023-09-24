@@ -9,7 +9,7 @@
 		/// Contains information about a simulated keyboard event.
 		/// </summary>
 		[StructLayout(LayoutKind.Sequential)]
-		public struct KEYBDINPUT
+		public struct KeyboardInput
 		{
 			public ushort virtualKey;
 			public ushort scanCode;

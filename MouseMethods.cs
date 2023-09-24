@@ -31,8 +31,7 @@
 		/// </summary>
 		/// 
 		/// <param name="position">
-		/// Point, which represents position in screen-space
-		/// of all connected monitors
+		/// Point, which represents position in screen-space of primary monitor
 		/// </param>
 		/// 
 		/// <returns>
@@ -58,12 +57,12 @@
 		/// </summary>
 		/// 
 		/// <param name="coordinate">
-		/// Coordinate in screen-space of all connected monitors by X or Y axis.
+		/// Coordinate in screen-space of primary monitor by X or Y axis.
 		/// </param>
 		/// 
 		/// <param name="normalizationFactor">
 		/// <para>Size of axis, where coordinates are normalized.</para>
-		/// <para>Basically, it's height or width of screen-space of all connected monitors.</para>
+		/// <para>Basically, it's height or width of screen-space of primary monitor.</para>
 		/// </param>
 		/// 
 		/// <returns>Point in normalized 0-65535 coordinate system</returns>
@@ -81,15 +80,21 @@
 		/// <param name="newY">The new y-coordinate of the cursor, in screen coordinates.</param>
 		public static void SendMouseMove(int newX, int newY)
 		{
-			int dx = Normalize(newX, 1440);
-			int dy = Normalize(newY, 900);
+			Screen primaryScreen;
+			if (Screen.PrimaryScreen != null)
+				primaryScreen = Screen.PrimaryScreen;
+			else
+				throw new NullReferenceException();
 
-			INPUT input = new()
+			int dx = Normalize(newX, primaryScreen.Bounds.Width);
+			int dy = Normalize(newY, primaryScreen.Bounds.Height);
+
+			Input input = new()
 			{
 				type = InputType.Mouse,
 				union = new InputUnion
 				{
-					mouse = new MOUSEINPUT
+					mouse = new MouseInput
 					{
 						deltaX = dx,
 						deltaY = dy,
@@ -111,7 +116,7 @@
 			int x = Normalize(point).X;
 			int y = Normalize(point).Y;
 
-			INPUT input = new()
+			Input input = new()
 			{
 				type = InputType.Mouse,
 				union = new()
@@ -130,7 +135,7 @@
 
 		public static void SendMouseLClick()
 		{
-			INPUT[] inputs =
+			Input[] inputs =
 			[
 				new()
 				{
@@ -139,8 +144,6 @@
 					{
 						mouse = new()
 						{
-							deltaX = 0,
-							deltaY = 0,
 							flags = MouseFlags.LeftDown
 						}
 					}
@@ -152,42 +155,6 @@
 					{
 						mouse = new()
 						{
-							deltaX = 0,
-							deltaY = 0,
-							flags = MouseFlags.LeftUp
-						}
-					}
-				},
-			];
-			SendInput(inputs);
-		}
-
-		public static void SendMouseLClick(int x, int y)
-		{
-			INPUT[] inputs =
-			[
-				new()
-				{
-					type = InputType.Mouse,
-					union = new()
-					{
-						mouse = new()
-						{
-							deltaX = 0,
-							deltaY = 0,
-							flags = MouseFlags.LeftDown
-						}
-					}
-				},
-				new()
-				{
-					type = InputType.Mouse,
-					union = new()
-					{
-						mouse = new()
-						{
-							deltaX = 0,
-							deltaY = 0,
 							flags = MouseFlags.LeftUp
 						}
 					}
