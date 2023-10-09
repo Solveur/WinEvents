@@ -1,46 +1,26 @@
 namespace WinEvents
 {
-  using System.Diagnostics;
-  using System.Runtime.InteropServices;
-  using static MouseMethods;
-  using static NativeMethods;
+	using static MouseMethods;
 
-  public delegate bool CallBack(int hwnd, int lParam);
-  public partial class Form1 : Form
-  {
-    private const int WM_KEYDOWN = 0x0100;
-    private static HookProc _proc = HookCallback;
-    private static IntPtr _hookID = IntPtr.Zero;
+	public partial class Form1 : Form
+	{
+		public Form1()
+		{
+			InitializeComponent();
+		}
 
-    public static void Main()
-    {
-      _hookID = SetHook(_proc);
-      Application.Run();
-      UnhookWindowsHookEx(_hookID);
-    }
+		private void Button1_Click(object sender, EventArgs e)
+		{
+			//int width = Screen.AllScreens.Sum((screen) => { return screen.Bounds.Width; });
+			//int height = Screen.AllScreens.Sum((screen) => { return screen.Bounds.Height; });
 
-    private static IntPtr SetHook(HookProc proc)
-    {
-      using (Process curProcess = Process.GetCurrentProcess())
-      using (ProcessModule curModule = curProcess.MainModule)
-      {
-        return SetWindowsHookEx(HookId.MouseLowLevel, proc, GetModuleHandle(curModule.ModuleName), 0);
-      }
-    }
+			//MessageBox.Show($"{width}x{height}");
+			SendMouseMove(770, 450);
+		}
 
-    public static Point PointFromLParam(IntPtr lParam)
-    {
-			return new Point((ushort)lParam, (ushort)lParam >> 16);
-    }
-
-    private static IntPtr HookCallback(int nCode, wParam wParam, IntPtr lParam)
-    {
-      if (nCode >= 0)
-      {
-        Point p = PointFromLParam(lParam);
-        Console.WriteLine($"{nCode}, {wParam}, {Convert.ToString(p, 2)}");
-      }
-      return CallNextHookEx(0, nCode, wParam, lParam);
-    }
-  }
+		private void Button2_Click(object sender, EventArgs e)
+		{
+			SendMouseLClick();
+		}
+	}
 }
