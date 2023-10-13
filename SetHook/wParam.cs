@@ -1,16 +1,16 @@
-﻿namespace WinEvents
+﻿namespace WinEvents.SetHook
 {
 	public enum wParam
 	{
 		/// <summary>
-		/// Posted to the window with the keyboard focus when a nonsystem key is pressed.
-		/// A nonsystem key is a key that is pressed when the ALT key is not pressed.
+		/// Posted to the window with the keyboard focus when a non-system key is pressed.
+		/// A non-system key is a key that is pressed when the ALT key is not pressed.
 		/// </summary>
 		WM_KEYDOWN = 0x0100,
 
 		/// <summary>
-		/// Posted to the window with the keyboard focus when a nonsystem key is released.
-		/// A nonsystem key is a key that is pressed when the ALT key is not pressed,
+		/// Posted to the window with the keyboard focus when a non-system key is released.
+		/// A non-system key is a key that is pressed when the ALT key is not pressed,
 		/// or a keyboard key that is pressed when a window has the keyboard focus.
 		/// </summary>
 		WM_KEYUP = 0x0101,
@@ -83,5 +83,21 @@
 		/// Otherwise, the message is posted to the window that has captured the mouse.
 		/// </summary>
 		WM_RBUTTONUP  = 0x0205,
+		
+		/// <summary>
+		/// Posted when the user presses the middle mouse button
+		/// while the cursor is in the client area of a window.
+		/// If the mouse is not captured, the message is posted to the window beneath the cursor.
+		/// Otherwise, the message is posted to the window that has captured the mouse.
+		/// </summary>
+		WM_MIDDOWN = 0x0207,
+		
+		/// <summary>
+		/// Posted when the user releases the middle mouse button
+		/// while the cursor is in the client area of a window.
+		/// If the mouse is not captured, the message is posted to the window beneath the cursor.
+		/// Otherwise, the message is posted to the window that has captured the mouse.
+		/// </summary>
+		WM_MIDUP = 0x0208,
 	}
 }

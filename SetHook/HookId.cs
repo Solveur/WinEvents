@@ -1,4 +1,4 @@
-﻿namespace WinEvents
+﻿namespace WinEvents.SetHook
 {
 	public enum HookId : int
 	{
@@ -12,7 +12,7 @@
 		/// Installs a hook procedure that monitors messages
 		/// after they have been processed by the destination window procedure.
 		/// </summary>
-		CallWindowProcedureRET = 12,
+		CallWindowProcedureRet = 12,
 
 		/// <summary>
 		/// Installs a hook procedure that receives

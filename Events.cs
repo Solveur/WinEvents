@@ -20,14 +20,14 @@ namespace WinEvents
 		{
 			using Process curProcess = Process.GetCurrentProcess();
 			using ProcessModule? curModule = curProcess.MainModule;
-			return SetWindowsHookEx(HookId.MouseLowLevel, proc, GetModuleHandle(curModule?.ModuleName ?? "0"), 0);
+			return SetWindowsHookEx(HookId.KeyboardLowLevel, proc, GetModuleHandle(curModule?.ModuleName ?? "0"), 0);
 		}
 
 		[StructLayout(LayoutKind.Explicit)]
 		private struct WordUnion
 		{
 			[FieldOffset(0)]
-			public IntPtr Number;
+			public IntPtr Word;
 
 			[FieldOffset(0)]
 			public ushort Low;
@@ -39,15 +39,16 @@ namespace WinEvents
 		private static Point PointFromLParam(IntPtr lParam)
 		{
 			IntPtr coords = (IntPtr)Marshal.ReadInt64(lParam);
-			WordUnion point = new() {Number = coords};
+			WordUnion point = new() {Word = coords};
 			return new(point.High, point.Low);
 		}
 		
 		private static IntPtr HookCallback(int nCode, wParam wParam, IntPtr lParam)
 		{
+			Keys key = (Keys)Marshal.ReadInt32(lParam);
 			if (nCode >= 0)
 			{
-				Console.WriteLine($"{nCode}, {wParam}, {PointFromLParam(lParam)}");
+				Console.WriteLine($"{nCode}, {wParam}, {key}");
 			}
 			return CallNextHookEx(0, nCode, wParam, lParam);
 		}
