@@ -1,6 +1,8 @@
-﻿namespace WinEvents
+﻿namespace WinEvents.SendInput
 {
     using static NativeMethods;
+    using Input;
+    using Flags;
 
     public static class MouseMethods
     {
@@ -12,7 +14,7 @@
         /// </param>
         /// <returns>Point in screen-space coordinates</returns>
         /// <exception cref="NullReferenceException"></exception>
-        private static Point Denormalize(Point position)
+        public static Point Denormalize(Point position)
         {
             Screen primaryScreen;
             if (Screen.PrimaryScreen != null)
@@ -89,7 +91,7 @@
             int dx = Normalize(newX, primaryScreen.Bounds.Width);
             int dy = Normalize(newY, primaryScreen.Bounds.Height);
 
-            Input input = new()
+            InputStruct input = new()
             {
                 type = InputType.Mouse,
                 union = new InputUnion
@@ -116,7 +118,7 @@
             int x = Normalize(point).X;
             int y = Normalize(point).Y;
 
-            Input input = new()
+            InputStruct input = new()
             {
                 type = InputType.Mouse,
                 union = new()
@@ -135,8 +137,8 @@
 
         public static void SendMouseLClick()
         {
-            Input[] inputs =
-            [
+            InputStruct[] inputs =
+            {
                 new()
                 {
                     type = InputType.Mouse,
@@ -159,7 +161,7 @@
                         }
                     }
                 },
-            ];
+            };
             SendInput(inputs);
         }
     }

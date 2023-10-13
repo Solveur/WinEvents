@@ -1,4 +1,4 @@
-﻿namespace WinEvents
+﻿namespace WinEvents.SetHook
 {
 	using System.Runtime.InteropServices;
 	using Handle = IntPtr;
@@ -10,13 +10,13 @@
 
 	public delegate IntPtr HookProc(int nCode, wParam wParam, lParam lParam);
 
-	internal partial class NativeMethods
+	internal static partial class NativeMethods
 	{
 		/// <summary>
 		/// Installs an application-defined hook procedure into a hook chain.
 		/// </summary>
 		/// 
-		/// <param name="IdHook">
+		/// <param name="idHook">
 		/// The type of hook procedure to be installed.
 		/// </param>
 		/// 
@@ -30,7 +30,7 @@
 		///		</para>
 		/// </param>
 		/// 
-		/// <param name="hInstance">
+		/// <param name="hmod">
 		/// A handle to the DLL containing the hook procedure
 		/// pointed to by the lpfn parameter.
 		///		<para>
@@ -93,7 +93,6 @@
 		/// </returns>
 		[LibraryImport("user32.dll", EntryPoint = "CallNextHookEx", SetLastError = true)]
 		public static partial lResult CallNextHookEx(hHook hhk, int nCode, wParam wParam, lParam lParam);
-
 
 		/// <summary>
 		/// Removes a hook procedure installed in a hook chain by the SetWindowsHookEx function.
