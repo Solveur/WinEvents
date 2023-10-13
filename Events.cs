@@ -1,17 +1,17 @@
 namespace WinEvents
 {
 	using System.Diagnostics;
+	using System.Runtime.InteropServices;
 	using SetHook;
 	using static SetHook.NativeMethods;
 
-	public class Events
+	public static class Events
 	{
-		private static readonly HookProc _proc = HookCallback;
 		private static IntPtr _hookId = IntPtr.Zero;
 
 		public static void Main()
 		{
-			_hookId = SetHook(_proc);
+			_hookId = SetHook(HookCallback);
 			Application.Run();
 			UnhookWindowsHookEx(_hookId);
 		}
@@ -20,19 +20,34 @@ namespace WinEvents
 		{
 			using Process curProcess = Process.GetCurrentProcess();
 			using ProcessModule? curModule = curProcess.MainModule;
-			return SetWindowsHookEx(HookId.MouseLowLevel, proc, GetModuleHandle(curModule.ModuleName), 0);
+			return SetWindowsHookEx(HookId.MouseLowLevel, proc, GetModuleHandle(curModule?.ModuleName ?? "0"), 0);
 		}
 
-		public static Point PointFromLParam(IntPtr lParam)
+		[StructLayout(LayoutKind.Explicit)]
+		private struct WordUnion
 		{
-			return new((ushort)lParam, (ushort)lParam >> 16);
+			[FieldOffset(0)]
+			public IntPtr Number;
+
+			[FieldOffset(0)]
+			public ushort Low;
+
+			[FieldOffset(4)]
+			public ushort High;
 		}
 
+		private static Point PointFromLParam(IntPtr lParam)
+		{
+			IntPtr coords = (IntPtr)Marshal.ReadInt64(lParam);
+			WordUnion point = new() {Number = coords};
+			return new(point.High, point.Low);
+		}
+		
 		private static IntPtr HookCallback(int nCode, wParam wParam, IntPtr lParam)
 		{
 			if (nCode >= 0)
 			{
-				Console.WriteLine($"{nCode}, {wParam}, {Convert.ToString(lParam, 2)}");
+				Console.WriteLine($"{nCode}, {wParam}, {PointFromLParam(lParam)}");
 			}
 			return CallNextHookEx(0, nCode, wParam, lParam);
 		}
