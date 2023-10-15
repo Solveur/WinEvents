@@ -1,6 +1,5 @@
 namespace WinEvents
 {
-	using System.Diagnostics;
 	using System.Runtime.InteropServices;
 	using SetHook;
 	using static SetHook.NativeMethods;
@@ -9,12 +8,12 @@ namespace WinEvents
 	{
 		public static void Main()
 		{
-			Hook mouse = new Hook()
+			Hook mouse = new()
 			{
 					Type = HookType.MouseLowLevel,
 					Procedure = MouseCallback
 			};
-			Hook keyboard = new Hook()
+			Hook keyboard = new()
 			{
 					Type = HookType.KeyboardLowLevel,
 					Procedure = KeyboardCallback
@@ -25,13 +24,6 @@ namespace WinEvents
 			Application.Run();
 			mouse.Unset();
 			keyboard.Unset();
-		}
-
-		private static IntPtr SetHook(HookType type, HookProc proc)
-		{
-			using Process curProcess = Process.GetCurrentProcess();
-			using ProcessModule? curModule = curProcess.MainModule;
-			return SetWindowsHookEx(type, proc, GetModuleHandle(curModule?.ModuleName ?? "0"), 0);
 		}
 
 		private static Point PointFromLParam(IntPtr lParam)
