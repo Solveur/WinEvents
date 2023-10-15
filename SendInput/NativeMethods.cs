@@ -21,7 +21,7 @@
 		/// <param name="pInputs">An array of INPUT structures. Each structure represents an event to be inserted into the keyboard or mouse input stream.</param>
 		/// <returns></returns>
 		public static uint SendInput(InputStruct[] pInputs) =>
-			_sendInputs((uint)pInputs.Length, pInputs, Marshal.SizeOf(typeof(InputStruct)));
+				_sendInputs((uint)pInputs.Length, pInputs, Marshal.SizeOf(typeof(InputStruct)));
 
 		/// <summary>
 		/// Synthesizes keystroke, mouse motion, or button click.
@@ -29,6 +29,6 @@
 		/// <param name="pInput"></param>
 		/// <returns></returns>
 		public static uint SendInput(InputStruct pInput) =>
-			_sendInputs(1, new []{pInput}, Marshal.SizeOf(typeof(InputStruct)));
+				_sendInputs(1, new[] {pInput}, Marshal.SizeOf(typeof(InputStruct)));
 	}
 }

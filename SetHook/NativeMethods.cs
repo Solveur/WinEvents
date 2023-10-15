@@ -8,7 +8,7 @@
 	using lResult = IntPtr;
 	using DWORD = UIntPtr;
 
-	public delegate IntPtr HookProc(int nCode, wParam wParam, lParam lParam);
+	public delegate HookProc HookProc(int nCode, wParam wParam, lParam lParam);
 
 	internal static partial class NativeMethods
 	{
@@ -16,7 +16,7 @@
 		/// Installs an application-defined hook procedure into a hook chain.
 		/// </summary>
 		/// 
-		/// <param name="idHook">
+		/// <param name="typeHook">
 		/// The type of hook procedure to be installed.
 		/// </param>
 		/// 
@@ -58,7 +58,7 @@
 		/// </para>
 		/// </returns>
 		[LibraryImport("user32.dll", EntryPoint = "SetWindowsHookExA", SetLastError = true)]
-		public static partial hHook SetWindowsHookEx(HookId idHook, HookProc lpfn, hInstance hmod, DWORD dwThreadId);
+		public static partial hHook SetWindowsHookEx(HookType typeHook, HookProc lpfn, hInstance hmod, DWORD dwThreadId);
 
 		/// <summary>
 		/// Passes the hook information to the next hook procedure in the current hook chain. A hook procedure can call this function either before or after processing the hook information.
@@ -92,7 +92,7 @@
 		/// The meaning of the return value depends on the hook type.
 		/// </returns>
 		[LibraryImport("user32.dll", EntryPoint = "CallNextHookEx", SetLastError = true)]
-		public static partial lResult CallNextHookEx(hHook hhk, int nCode, wParam wParam, lParam lParam);
+		public static partial HookProc CallNextHookEx(hHook hhk, int nCode, wParam wParam, lParam lParam);
 
 		/// <summary>
 		/// Removes a hook procedure installed in a hook chain by the SetWindowsHookEx function.
@@ -112,7 +112,7 @@
 		[LibraryImport("user32.dll", EntryPoint = "UnhookWindowsHookEx", SetLastError = true)]
 		[return: MarshalAs(UnmanagedType.Bool)]
 		public static partial bool UnhookWindowsHookEx(hHook hhk);
-		
+
 		/// <summary>
 		/// Retrieves a module handle for the specified module.
 		/// The module must have been loaded by the calling process.
@@ -137,7 +137,7 @@
 		/// If the function succeeds, the return value is a handle to the specified module.
 		/// If the function fails, the return value is NULL.
 		/// </returns>
-    [LibraryImport("kernel32.dll", EntryPoint = "GetModuleHandleW", SetLastError = true, StringMarshalling = StringMarshalling.Utf16)]
-    public static partial Handle GetModuleHandle(string lpModuleName);
+		[LibraryImport("kernel32.dll", EntryPoint = "GetModuleHandleW", SetLastError = true, StringMarshalling = StringMarshalling.Utf16)]
+		public static partial Handle GetModuleHandle(string lpModuleName);
 	}
 }

@@ -1,6 +1,6 @@
 ﻿namespace WinEvents.SetHook
 {
-	public enum HookId : int
+	public enum HookType : int
 	{
 		/// <summary>
 		/// Installs a hook procedure that monitors messages
@@ -30,14 +30,14 @@
 		/// Installs a hook procedure that will be called 
 		/// when the application's foreground thread is about to become idle.
 		/// </summary>
-		ForegroundIdle = 11, 
+		ForegroundIdle = 11,
 
 		/// <summary>
 		/// Installs a hook procedure that monitors
 		/// messages posted to a message queue. 
 		/// </summary>
 		GetMessageProcedure = 3,
-		
+
 		/// <summary>
 		/// Installs a hook procedure that monitors 
 		/// keystroke messages.
