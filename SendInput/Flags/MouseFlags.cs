@@ -1,4 +1,4 @@
-﻿namespace WinEvents.SendInput.Flags
+﻿namespace WinEvents.SendInput
 {
 	using System;
 

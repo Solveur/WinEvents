@@ -2,26 +2,48 @@
 {
 	using System.Diagnostics;
 	using SetHook;
-	using SendInput.Input;
 	using static SetHook.NativeMethods;
 
 	public class Hook
 	{
 		public HookType Type { get; init; }
-		public HookProc? Procedure { get; set; }
-		private List<InputStruct> record = new();
+		public HookProc Procedure { get; set; }
 		private IntPtr hook = IntPtr.Zero;
+		private IntPtr module = IntPtr.Zero;
+
+		public Hook(HookType type)
+		{
+			Type = type;
+			Procedure = (n, wp, lp) => CallNextHookEx(0, n, wp, lp);
+
+			using Process curProcess = Process.GetCurrentProcess();
+			using ProcessModule? curModule = curProcess.MainModule;
+			module = GetModuleHandle(curModule?.ModuleName ?? "0");
+		}
+
+		public Hook(HookType type, HookProc proc)
+		{
+			Type = type;
+			Procedure = proc;
+
+			using Process curProcess = Process.GetCurrentProcess();
+			using ProcessModule? curModule = curProcess.MainModule;
+			module = GetModuleHandle(curModule?.ModuleName ?? "0");
+		}
 
 		public void Set()
 		{
-			using Process curProcess = Process.GetCurrentProcess();
-			using ProcessModule? curModule = curProcess.MainModule;
-			hook = SetWindowsHookEx(Type, Procedure, GetModuleHandle(curModule?.ModuleName ?? "0"), 0);
+			hook = SetWindowsHookEx(Type, Procedure, module, 0);
 		}
 		
 		public bool Unset()
 		{
 			return UnhookWindowsHookEx(hook);
+		}
+
+		~Hook()
+		{
+			Unset();
 		}
 	}
 }

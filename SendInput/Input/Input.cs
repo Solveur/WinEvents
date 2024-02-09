@@ -1,11 +1,11 @@
-﻿namespace WinEvents.SendInput.Input
+﻿namespace WinEvents.SendInput
 {
 	using System.Runtime.InteropServices;
 
 	/// <summary>
 	/// Used by SendInput to store information for synthesizing input events such as keystrokes, mouse movement, and mouse clicks.
 	/// </summary>
-	public struct InputStruct
+	public struct Input
 	{
 		public InputType type;
 		public InputUnion union;

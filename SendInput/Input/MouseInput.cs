@@ -1,7 +1,6 @@
-﻿namespace WinEvents.SendInput.Input
+﻿namespace WinEvents.SendInput
 {
 	using System.Runtime.InteropServices;
-	using Flags;
 
 	/// <summary>
 	/// Contains information about a simulated mouse event.

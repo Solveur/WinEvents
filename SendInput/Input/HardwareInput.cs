@@ -1,4 +1,4 @@
-﻿namespace WinEvents.SendInput.Input
+﻿namespace WinEvents.SendInput
 {
 	using System.Runtime.InteropServices;
 

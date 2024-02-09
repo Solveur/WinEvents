@@ -1,8 +1,6 @@
 ﻿namespace WinEvents.SendInput
 {
 	using static NativeMethods;
-	using Input;
-	using Flags;
 
 	public static class MouseMethods
 	{
@@ -80,7 +78,7 @@
 		/// </summary>
 		/// <param name="newX">The new x-coordinate of the cursor, in screen coordinates.</param>
 		/// <param name="newY">The new y-coordinate of the cursor, in screen coordinates.</param>
-		public static void SendMouseMove(int newX, int newY)
+		public static uint SendMouseMove(int newX, int newY)
 		{
 			Screen primaryScreen;
 			if (Screen.PrimaryScreen != null)
@@ -91,78 +89,89 @@
 			int dx = Normalize(newX, primaryScreen.Bounds.Width);
 			int dy = Normalize(newY, primaryScreen.Bounds.Height);
 
-			InputStruct input = new()
+			Input input = new()
 			{
-					type = InputType.Mouse,
-					union = new InputUnion
+				type = InputType.Mouse,
+				union = new InputUnion
+				{
+					mouse = new MouseInput
 					{
-							mouse = new MouseInput
-							{
-									deltaX = dx,
-									deltaY = dy,
-									flags = MouseFlags.Absolute | MouseFlags.Move
-							}
+						deltaX = dx,
+						deltaY = dy,
+						flags = MouseFlags.Absolute | MouseFlags.Move,
+						extraInfo = GetMessageExtraInfo()
 					}
+				}
 			};
 
-			SendInput(input);
+			return SendInput(input);
 		}
-
 
 		/// <summary>
 		/// Moves the cursor to the specified screen coordinates.
 		/// </summary>
-		/// <param name="point">The new coordinate of the cursor, in screen coordinates.</param>
-		public static void SendMouseMove(Point point)
+		/// <param name="point">
+		/// The new coordinate of the cursor, in screen coordinates.
+		/// </param>
+		public static uint SendMouseMove(Point point)
 		{
 			int x = Normalize(point).X;
 			int y = Normalize(point).Y;
 
-			InputStruct input = new()
+			Input input = new()
 			{
+				type = InputType.Mouse,
+				union = new()
+				{
+					mouse = new()
+					{
+						deltaX = x,
+						deltaY = y,
+						flags = MouseFlags.Absolute | MouseFlags.Move,
+						extraInfo = GetMessageExtraInfo()
+					}
+				}
+			};
+
+			return SendInput(input);
+		}
+
+		/// <summary>
+		/// Sends left mouse button click to the current location of cursor
+		/// </summary>
+		/// <returns>
+		/// Is successfull
+		/// </returns>
+		public static bool SendMouseLClick()
+		{
+			Input[] inputs =
+			{
+				new()
+				{
 					type = InputType.Mouse,
 					union = new()
 					{
-							mouse = new()
-							{
-									deltaX = x,
-									deltaY = y,
-									flags = MouseFlags.Absolute | MouseFlags.Move
-							}
+						mouse = new()
+						{
+							flags = MouseFlags.LeftDown,
+							extraInfo = GetMessageExtraInfo()
+						}
 					}
-			};
-
-			SendInput(input);
-		}
-
-		public static void SendMouseLClick()
-		{
-			InputStruct[] inputs =
-			{
-					new()
+				},
+				new()
+				{
+					type = InputType.Mouse,
+					union = new()
 					{
-							type = InputType.Mouse,
-							union = new()
-							{
-									mouse = new()
-									{
-											flags = MouseFlags.LeftDown
-									}
-							}
+						mouse = new()
+						{
+							flags = MouseFlags.LeftUp,
+							extraInfo = GetMessageExtraInfo()
+						}
 					},
-					new()
-					{
-							type = InputType.Mouse,
-							union = new()
-							{
-									mouse = new()
-									{
-											flags = MouseFlags.LeftUp
-									}
-							}
-					},
+				}
 			};
-			SendInput(inputs);
+			return SendInput(inputs) == 2;
 		}
 	}
 }

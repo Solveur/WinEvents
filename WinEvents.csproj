@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
+        <OutputType>WinExe</OutputType>
         <TargetFramework>net8.0-windows</TargetFramework>
         <Nullable>enable</Nullable>
         <UseWindowsForms>true</UseWindowsForms>
@@ -10,14 +10,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Remove=".gitattributes"/>
-        <None Remove=".gitignore"/>
-        <None Remove="global.json"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Compile Remove="Form1.cs"/>
-        <Compile Remove="Form1.Designer.cs"/>
+        <None Remove=".gitattributes" />
+        <None Remove=".gitignore" />
+        <None Remove="global.json" />
     </ItemGroup>
 
 </Project>

@@ -8,7 +8,7 @@
 	using lResult = IntPtr;
 	using DWORD = UIntPtr;
 
-	public delegate HookProc HookProc(int nCode, wParam wParam, lParam lParam);
+	public delegate IntPtr HookProc(int nCode, wParam wParam, lParam lParam);
 
 	internal static partial class NativeMethods
 	{
@@ -92,7 +92,7 @@
 		/// The meaning of the return value depends on the hook type.
 		/// </returns>
 		[LibraryImport("user32.dll", EntryPoint = "CallNextHookEx", SetLastError = true)]
-		public static partial HookProc CallNextHookEx(hHook hhk, int nCode, wParam wParam, lParam lParam);
+		public static partial hHook CallNextHookEx(hHook hhk, int nCode, wParam wParam, lParam lParam);
 
 		/// <summary>
 		/// Removes a hook procedure installed in a hook chain by the SetWindowsHookEx function.
@@ -139,5 +139,19 @@
 		/// </returns>
 		[LibraryImport("kernel32.dll", EntryPoint = "GetModuleHandleW", SetLastError = true, StringMarshalling = StringMarshalling.Utf16)]
 		public static partial Handle GetModuleHandle(string lpModuleName);
+
+		/// <summary>
+		/// Retrieves a handle to the window that contains the specified point.
+		/// </summary>
+		/// <param name="p">The point to be checked.</param>
+		/// <returns>
+		/// The return value is a handle to the window that contains the point.
+		/// If no window exists at the given point, the return value is NULL.
+		/// If the point is over a static text control,
+		/// the return value is a handle to the window under
+		/// the static text control.
+		/// </returns>
+		[DllImport("user32.dll", EntryPoint = "WindowFromPoint")]
+		public static extern hHook WindowFromPoint(Point p);
 	}
 }
