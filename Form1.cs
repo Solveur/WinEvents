@@ -1,11 +1,7 @@
 ﻿namespace WinEvents
 {
-	using System.Runtime.InteropServices;
-	using System.Diagnostics;
 	using System.Windows.Forms;
-	using SetHook;
-	using static SetHook.NativeMethods;
-	using SendInput;
+	using System.Runtime.InteropServices;
 	using static SendInput.MouseMethods;
 	using static SendInput.KeyboardMethods;
 
@@ -18,11 +14,13 @@
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			textBox1.Text = SendMouseLClick().ToString();
+			timer1.Enabled = !timer1.Enabled;
 		}
 
 		private void timer1_Tick(object sender, EventArgs e)
 		{
+			checkBox1.Checked = !checkBox1.Checked;
+			SendKeyboardInput();
 		}
 	}
 }

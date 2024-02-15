@@ -1,26 +1,22 @@
 namespace WinEvents
 {
-	using System.Diagnostics;
 	using System.Runtime.InteropServices;
-	using SetHook;
-	using static SetHook.NativeMethods;
-	using SendInput;
-	using static SendInput.MouseMethods;
-	using static SendInput.KeyboardMethods;
+	using Hooks;
+	using static Hooks.NativeMethods;
 
 	public static class Events
 	{
 		public static void Main()
 		{
-			//Hook mouse = new(HookType.MouseLowLevel, MouseCallback);
-			//Hook keyboard = new(HookType.KeyboardLowLevel, KeyboardCallback);
+			Hook mouse = new(HookType.MouseLowLevel, MouseCallback);
+			Hook keyboard = new(HookType.KeyboardLowLevel, KeyboardCallback);
 
-			//mouse.Set();
-			//keyboard.Set();
-			//Application.Run();
-			//mouse.Unset();
-			//keyboard.Unset();
-			Application.Run(new Form1());
+			mouse.Set();
+			keyboard.Set();
+			Application.Run();
+			mouse.Unset();
+			keyboard.Unset();
+			//Application.Run(new Form1());
 		}
 
 		private static Point PointFromLParam(IntPtr lParam)
