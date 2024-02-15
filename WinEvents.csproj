@@ -19,5 +19,4 @@
       <ProjectReference Include="..\Hooks\Hooks.csproj" />
       <ProjectReference Include="..\SendInput\SendInput.csproj" />
     </ItemGroup>
-
 </Project>

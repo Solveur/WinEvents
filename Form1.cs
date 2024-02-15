@@ -12,12 +12,12 @@
 			InitializeComponent();
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void Button1_Click(object sender, EventArgs e)
 		{
 			timer1.Enabled = !timer1.Enabled;
 		}
 
-		private void timer1_Tick(object sender, EventArgs e)
+		private void Timer1_Tick(object sender, EventArgs e)
 		{
 			checkBox1.Checked = !checkBox1.Checked;
 			SendKeyboardInput();
