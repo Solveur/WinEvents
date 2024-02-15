@@ -2,53 +2,29 @@ namespace WinEvents
 {
 	using System.Runtime.InteropServices;
 	using Hooks;
-	using static Hooks.NativeMethods;
 
-	public static class Events
+	public class Events
 	{
 		public static void Main()
 		{
-			Hook mouse = new(HookType.MouseLowLevel, MouseCallback);
-			Hook keyboard = new(HookType.KeyboardLowLevel, KeyboardCallback);
+			MouseHook mouse = new();
+			mouse.Click += new EventHandler(onClick);
+			mouse.MouseDown += new MouseEventHandler(onClick);
 
-			mouse.Set();
-			keyboard.Set();
+			mouse.Start();
 			Application.Run();
-			mouse.Unset();
-			keyboard.Unset();
+			mouse.Stop();
 			//Application.Run(new Form1());
 		}
 
-		private static Point PointFromLParam(IntPtr lParam)
+		public static void onClick(object? sender, EventArgs e)
 		{
-			IntPtr coords = (IntPtr)Marshal.ReadInt64(lParam);
-			DWord point = new(coords);
 
-			ushort x = point.Low;
-			ushort y = point.High;
-
-			return new(x, y);
 		}
 
-		private static IntPtr MouseCallback(int nCode, wParam wParam, IntPtr lParam)
+		public static void onMouseDown(object? sender, MouseEventArgs e)
 		{
-			if (nCode >= 0 && wParam != wParam.MouseMove)
-			{
-				Point point = PointFromLParam(lParam);
-				IntPtr window = WindowFromPoint(point);
-				Console.WriteLine($"{nCode}, {wParam}, {PointFromLParam(lParam)}, {window}");
-			}
-			return CallNextHookEx(0, nCode, wParam, lParam);
-		}
 
-		private static IntPtr KeyboardCallback(int nCode, wParam wParam, IntPtr lParam)
-		{
-			Keys key = (Keys)Marshal.ReadInt32(lParam);
-			if (nCode >= 0)
-			{
-				Console.WriteLine($"{nCode}, {wParam}, {key}");
-			}
-			return CallNextHookEx(0, nCode, wParam, lParam);
 		}
 	}
 }
