@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			groupBox_Button = new GroupBox();
+			panel1 = new Panel();
 			radioButton_RMB = new RadioButton();
 			radioButton_MMB = new RadioButton();
 			radioButton_MB5 = new RadioButton();
@@ -39,6 +40,7 @@
 			// 
 			// groupBox_Button
 			// 
+			groupBox_Button.Controls.Add(panel1);
 			groupBox_Button.Controls.Add(radioButton_RMB);
 			groupBox_Button.Controls.Add(radioButton_MMB);
 			groupBox_Button.Controls.Add(radioButton_MB5);
@@ -50,6 +52,16 @@
 			groupBox_Button.TabIndex = 0;
 			groupBox_Button.TabStop = false;
 			groupBox_Button.Text = "Down";
+			// 
+			// panel1
+			// 
+			panel1.AllowDrop = true;
+			panel1.BackColor = Color.Gainsboro;
+			panel1.Location = new Point(66, 72);
+			panel1.Name = "panel1";
+			panel1.Size = new Size(57, 30);
+			panel1.TabIndex = 1;
+			panel1.MouseDown += Panel1_MouseDown;
 			// 
 			// radioButton_RMB
 			// 
@@ -130,5 +142,6 @@
 		private RadioButton radioButton_MB4;
 		private RadioButton radioButton_LMB;
 		private RadioButton radioButton_MB5;
+		private Panel panel1;
 	}
 }

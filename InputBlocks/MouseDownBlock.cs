@@ -1,14 +1,6 @@
 ﻿namespace WinEvents.InputBlocks
 {
 	using System;
-	using System.Collections.Generic;
-	using System.ComponentModel;
-	using System.Data;
-	using System.Drawing;
-	using System.Linq;
-	using System.Text;
-	using System.Threading.Tasks;
-	using System.Windows.Forms;
 	using SendInput;
 
 	public partial class MouseDownBlock : InputControl
@@ -77,6 +69,11 @@
 			}
 			else
 				mouseData = 0;
+		}
+
+		private void Panel1_MouseDown(object sender, MouseEventArgs e)
+		{
+			Parent?.DoDragDrop(this, DragDropEffects.Move);
 		}
 	}
 }

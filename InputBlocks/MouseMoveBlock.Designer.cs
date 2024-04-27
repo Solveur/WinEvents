@@ -1,4 +1,4 @@
-﻿namespace WinEvents
+﻿namespace WinEvents.InputBlocks
 {
 	partial class MouseMoveBlock
 	{

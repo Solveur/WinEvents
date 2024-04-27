@@ -11,6 +11,7 @@ namespace WinEvents
 		static readonly MouseHook mouse = new();
 		static readonly KeyboardHook keyboard = new();
 		static readonly Timer t = new();
+		[STAThread]
 		static void Main()
 		{
 			//t.Interval = 100;

@@ -28,31 +28,30 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			flowLayoutPanel1 = new FlowLayoutPanel();
+			flowLayoutPanel_InputOverrides = new FlowLayoutPanel();
 			inputOverride1 = new InputOverride();
 			button1_AddOverride = new Button();
-			flowLayoutPanel2 = new FlowLayoutPanel();
-			mouseMoveBlock2 = new MouseMoveBlock();
+			flowLayoutPanel_TestSurface = new FlowLayoutPanel();
+			mouseMoveBlock1 = new InputBlocks.MouseMoveBlock();
 			mouseDownBlock1 = new InputBlocks.MouseDownBlock();
 			mouseUpBlock1 = new InputBlocks.MouseUpBlock();
 			button1 = new Button();
-			button2 = new Button();
-			flowLayoutPanel1.SuspendLayout();
-			flowLayoutPanel2.SuspendLayout();
+			flowLayoutPanel_InputOverrides.SuspendLayout();
+			flowLayoutPanel_TestSurface.SuspendLayout();
 			SuspendLayout();
 			// 
-			// flowLayoutPanel1
+			// flowLayoutPanel_InputOverrides
 			// 
-			flowLayoutPanel1.BackColor = SystemColors.Control;
-			flowLayoutPanel1.Controls.Add(inputOverride1);
-			flowLayoutPanel1.Controls.Add(button1_AddOverride);
-			flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-			flowLayoutPanel1.Location = new Point(0, 0);
-			flowLayoutPanel1.Margin = new Padding(3, 0, 3, 0);
-			flowLayoutPanel1.Name = "flowLayoutPanel1";
-			flowLayoutPanel1.Padding = new Padding(5, 5, 0, 0);
-			flowLayoutPanel1.Size = new Size(370, 631);
-			flowLayoutPanel1.TabIndex = 0;
+			flowLayoutPanel_InputOverrides.BackColor = SystemColors.Control;
+			flowLayoutPanel_InputOverrides.Controls.Add(inputOverride1);
+			flowLayoutPanel_InputOverrides.Controls.Add(button1_AddOverride);
+			flowLayoutPanel_InputOverrides.FlowDirection = FlowDirection.TopDown;
+			flowLayoutPanel_InputOverrides.Location = new Point(0, 0);
+			flowLayoutPanel_InputOverrides.Margin = new Padding(3, 0, 3, 0);
+			flowLayoutPanel_InputOverrides.Name = "flowLayoutPanel_InputOverrides";
+			flowLayoutPanel_InputOverrides.Padding = new Padding(5, 5, 0, 0);
+			flowLayoutPanel_InputOverrides.Size = new Size(370, 631);
+			flowLayoutPanel_InputOverrides.TabIndex = 0;
 			// 
 			// inputOverride1
 			// 
@@ -73,28 +72,31 @@
 			button1_AddOverride.UseVisualStyleBackColor = true;
 			button1_AddOverride.Click += Button1_AddOverride_Click;
 			// 
-			// flowLayoutPanel2
+			// flowLayoutPanel_TestSurface
 			// 
-			flowLayoutPanel2.AutoSize = true;
-			flowLayoutPanel2.Controls.Add(mouseMoveBlock2);
-			flowLayoutPanel2.Controls.Add(mouseDownBlock1);
-			flowLayoutPanel2.Controls.Add(mouseUpBlock1);
-			flowLayoutPanel2.Controls.Add(button2);
-			flowLayoutPanel2.Location = new Point(376, 12);
-			flowLayoutPanel2.Name = "flowLayoutPanel2";
-			flowLayoutPanel2.Size = new Size(494, 149);
-			flowLayoutPanel2.TabIndex = 1;
+			flowLayoutPanel_TestSurface.AllowDrop = true;
+			flowLayoutPanel_TestSurface.AutoSize = true;
+			flowLayoutPanel_TestSurface.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+			flowLayoutPanel_TestSurface.Controls.Add(mouseMoveBlock1);
+			flowLayoutPanel_TestSurface.Controls.Add(mouseDownBlock1);
+			flowLayoutPanel_TestSurface.Controls.Add(mouseUpBlock1);
+			flowLayoutPanel_TestSurface.Location = new Point(376, 12);
+			flowLayoutPanel_TestSurface.MinimumSize = new Size(425, 126);
+			flowLayoutPanel_TestSurface.Name = "flowLayoutPanel_TestSurface";
+			flowLayoutPanel_TestSurface.Size = new Size(425, 126);
+			flowLayoutPanel_TestSurface.TabIndex = 1;
+			flowLayoutPanel_TestSurface.DragEnter += flowLayoutPanel_TestSurface_DragEnter;
 			// 
-			// mouseMoveBlock2
+			// mouseMoveBlock1
 			// 
-			mouseMoveBlock2.AutoSize = true;
-			mouseMoveBlock2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-			mouseMoveBlock2.Location = new Point(3, 3);
-			mouseMoveBlock2.MinimumSize = new Size(20, 20);
-			mouseMoveBlock2.Name = "mouseMoveBlock2";
-			mouseMoveBlock2.Padding = new Padding(3);
-			mouseMoveBlock2.Size = new Size(125, 120);
-			mouseMoveBlock2.TabIndex = 0;
+			mouseMoveBlock1.AutoSize = true;
+			mouseMoveBlock1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+			mouseMoveBlock1.Location = new Point(3, 3);
+			mouseMoveBlock1.MinimumSize = new Size(20, 20);
+			mouseMoveBlock1.Name = "mouseMoveBlock1";
+			mouseMoveBlock1.Padding = new Padding(3);
+			mouseMoveBlock1.Size = new Size(125, 120);
+			mouseMoveBlock1.TabIndex = 4;
 			// 
 			// mouseDownBlock1
 			// 
@@ -103,22 +105,24 @@
 			mouseDownBlock1.Location = new Point(134, 3);
 			mouseDownBlock1.MinimumSize = new Size(20, 120);
 			mouseDownBlock1.Name = "mouseDownBlock1";
-			mouseDownBlock1.Size = new Size(135, 120);
+			mouseDownBlock1.Padding = new Padding(3);
+			mouseDownBlock1.Size = new Size(141, 120);
 			mouseDownBlock1.TabIndex = 2;
 			// 
 			// mouseUpBlock1
 			// 
 			mouseUpBlock1.AutoSize = true;
 			mouseUpBlock1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-			mouseUpBlock1.Location = new Point(275, 3);
+			mouseUpBlock1.Location = new Point(281, 3);
 			mouseUpBlock1.MinimumSize = new Size(20, 120);
 			mouseUpBlock1.Name = "mouseUpBlock1";
-			mouseUpBlock1.Size = new Size(135, 120);
+			mouseUpBlock1.Padding = new Padding(3);
+			mouseUpBlock1.Size = new Size(141, 120);
 			mouseUpBlock1.TabIndex = 1;
 			// 
 			// button1
 			// 
-			button1.Location = new Point(428, 192);
+			button1.Location = new Point(430, 212);
 			button1.Name = "button1";
 			button1.Size = new Size(129, 39);
 			button1.TabIndex = 2;
@@ -126,43 +130,33 @@
 			button1.UseVisualStyleBackColor = true;
 			button1.Click += Button1_Click;
 			// 
-			// button2
-			// 
-			button2.Location = new Point(416, 3);
-			button2.Name = "button2";
-			button2.Size = new Size(75, 23);
-			button2.TabIndex = 3;
-			button2.Text = "button2";
-			button2.UseVisualStyleBackColor = true;
-			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			AutoScroll = true;
 			ClientSize = new Size(1026, 631);
+			Controls.Add(flowLayoutPanel_TestSurface);
+			Controls.Add(flowLayoutPanel_InputOverrides);
 			Controls.Add(button1);
-			Controls.Add(flowLayoutPanel2);
-			Controls.Add(flowLayoutPanel1);
 			Name = "MainForm";
 			Text = "Form1";
-			flowLayoutPanel1.ResumeLayout(false);
-			flowLayoutPanel2.ResumeLayout(false);
-			flowLayoutPanel2.PerformLayout();
+			flowLayoutPanel_InputOverrides.ResumeLayout(false);
+			flowLayoutPanel_TestSurface.ResumeLayout(false);
+			flowLayoutPanel_TestSurface.PerformLayout();
 			ResumeLayout(false);
 			PerformLayout();
 		}
 
 		#endregion
 
-		private FlowLayoutPanel flowLayoutPanel1;
+		private FlowLayoutPanel flowLayoutPanel_InputOverrides;
+		private FlowLayoutPanel flowLayoutPanel_TestSurface;
 		private InputOverride inputOverride1;
 		private Button button1_AddOverride;
-		private FlowLayoutPanel flowLayoutPanel2;
-		private MouseMoveBlock mouseMoveBlock2;
 		private Button button1;
 		private InputBlocks.MouseDownBlock mouseDownBlock1;
 		private InputBlocks.MouseUpBlock mouseUpBlock1;
-		private Button button2;
+		private InputBlocks.MouseMoveBlock mouseMoveBlock1;
 	}
 }
