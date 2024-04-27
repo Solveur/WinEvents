@@ -11,9 +11,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hooks", "..\Hooks\Hooks.csproj", "{1CBD0516-340E-49D8-B8F3-A4292A10FCD9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SendInput", "..\SendInput\SendInput.csproj", "{EA179E3F-FEF0-402F-9CF4-159FD0C56E02}"
-	ProjectSection(ProjectDependencies) = postProject
-		{1CBD0516-340E-49D8-B8F3-A4292A10FCD9} = {1CBD0516-340E-49D8-B8F3-A4292A10FCD9}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
+        <OutputType>WinExe</OutputType>
         <TargetFramework>net8.0-windows</TargetFramework>
         <Nullable>enable</Nullable>
         <UseWindowsForms>true</UseWindowsForms>
@@ -19,5 +19,11 @@
     <ItemGroup>
       <ProjectReference Include="..\Hooks\Hooks.csproj" />
       <ProjectReference Include="..\SendInput\SendInput.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="InputBlocks\MouseUpBlock.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
     </ItemGroup>
 </Project>
