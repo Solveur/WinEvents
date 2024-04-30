@@ -21,20 +21,12 @@
 			flowLayoutPanel_InputOverrides.Controls.SetChildIndex(newOverride, index);
 		}
 
-		private void Button1_Click(object sender, EventArgs e)
+		private void button1_Click(object sender, EventArgs e)
 		{
-			Input[] inputs = GetInputs(flowLayoutPanel_TestSurface.Controls);
-			WinAPI.SendInput(inputs);
-		}
-
-		private static Input[] GetInputs(Control.ControlCollection collection)
-		{
-			return [.. collection.OfType<InputControl>().Cast<InputControl>().Select(con => con.Input)];
-		}
-
-		private void flowLayoutPanel_TestSurface_DragEnter(object sender, DragEventArgs e)
-		{
-			e.Effect = DragDropEffects.Move;
+			InputQueueForm nf = new();
+			nf.ShowDialog();
+			Input[] inputs = nf.Inputs;
+			MessageBox.Show(inputs.Length.ToString());
 		}
 	}
 }

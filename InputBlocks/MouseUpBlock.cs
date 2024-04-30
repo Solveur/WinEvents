@@ -3,7 +3,7 @@
 	using System;
 	using SendInput;
 
-	public partial class MouseUpBlock : InputControl
+	public partial class MouseUpBlock : InputBlock
 	{
 		private MouseFlags button = MouseFlags.LeftUp;
 		private int mouseData = 0;
@@ -69,6 +69,16 @@
 			}
 			else
 				mouseData = 0;
+		}
+
+		private void panel_Drag_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (e.Button != MouseButtons.Left)
+				return;
+
+			Visible = false;
+			Parent?.DoDragDrop(this, DragDropEffects.Move);
+			Visible = true;
 		}
 	}
 }

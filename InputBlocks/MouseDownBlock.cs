@@ -3,7 +3,7 @@
 	using System;
 	using SendInput;
 
-	public partial class MouseDownBlock : InputControl
+	public partial class MouseDownBlock : InputBlock
 	{
 		private MouseFlags button = MouseFlags.LeftDown;
 		private int mouseData = 0;
@@ -73,7 +73,12 @@
 
 		private void Panel1_MouseDown(object sender, MouseEventArgs e)
 		{
+			if (e.Button != MouseButtons.Left)
+				return;
+
+			Visible = false;
 			Parent?.DoDragDrop(this, DragDropEffects.Move);
+			Visible = true;
 		}
 	}
 }

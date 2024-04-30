@@ -1,6 +1,6 @@
 ﻿namespace WinEvents
 {
-	partial class InputBlock
+	partial class DragPlaceholderBlock
 	{
 		/// <summary> 
 		/// Обязательная переменная конструктора.
@@ -30,16 +30,15 @@
 		{
 			SuspendLayout();
 			// 
-			// InputBlock
+			// DragPlaceholderBlock
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			AutoSize = true;
-			AutoSizeMode = AutoSizeMode.GrowAndShrink;
-			MinimumSize = new Size(20, 20);
-			Name = "InputBlock";
-			Padding = new Padding(3);
-			Size = new Size(20, 20);
+			AutoSize = false;
+			BackColor = Color.Transparent;
+			BorderStyle = BorderStyle.FixedSingle;
+			Name = "DragPlaceholderBlock";
+			Size = new Size(18, 120);
 			ResumeLayout(false);
 		}
 

@@ -32,11 +32,12 @@
 			numericUpDown_Y = new NumericUpDown();
 			label1 = new Label();
 			label2 = new Label();
-			groupBox_Move = new GroupBox();
+			groupBox_MouseMove = new GroupBox();
+			panel_Drag = new Panel();
 			checkBox_Place = new CheckBox();
 			((System.ComponentModel.ISupportInitialize)numericUpDown_X).BeginInit();
 			((System.ComponentModel.ISupportInitialize)numericUpDown_Y).BeginInit();
-			groupBox_Move.SuspendLayout();
+			groupBox_MouseMove.SuspendLayout();
 			SuspendLayout();
 			// 
 			// numericUpDown_X
@@ -75,19 +76,31 @@
 			label2.TabIndex = 3;
 			label2.Text = "Y:";
 			// 
-			// groupBox_Move
+			// groupBox_MouseMove
 			// 
-			groupBox_Move.Controls.Add(checkBox_Place);
-			groupBox_Move.Controls.Add(numericUpDown_X);
-			groupBox_Move.Controls.Add(numericUpDown_Y);
-			groupBox_Move.Controls.Add(label2);
-			groupBox_Move.Controls.Add(label1);
-			groupBox_Move.Location = new Point(6, 6);
-			groupBox_Move.Name = "groupBox_Move";
-			groupBox_Move.Size = new Size(113, 108);
-			groupBox_Move.TabIndex = 5;
-			groupBox_Move.TabStop = false;
-			groupBox_Move.Text = "Move";
+			groupBox_MouseMove.Controls.Add(panel_Drag);
+			groupBox_MouseMove.Controls.Add(checkBox_Place);
+			groupBox_MouseMove.Controls.Add(numericUpDown_X);
+			groupBox_MouseMove.Controls.Add(numericUpDown_Y);
+			groupBox_MouseMove.Controls.Add(label2);
+			groupBox_MouseMove.Controls.Add(label1);
+			groupBox_MouseMove.Location = new Point(6, 6);
+			groupBox_MouseMove.Name = "groupBox_MouseMove";
+			groupBox_MouseMove.Size = new Size(113, 108);
+			groupBox_MouseMove.TabIndex = 5;
+			groupBox_MouseMove.TabStop = false;
+			groupBox_MouseMove.Text = "Mouse move";
+			// 
+			// panel_Drag
+			// 
+			panel_Drag.AllowDrop = true;
+			panel_Drag.BackColor = SystemColors.ControlLight;
+			panel_Drag.Cursor = Cursors.SizeAll;
+			panel_Drag.Location = new Point(66, 79);
+			panel_Drag.Name = "panel_Drag";
+			panel_Drag.Size = new Size(41, 23);
+			panel_Drag.TabIndex = 6;
+			panel_Drag.MouseDown += panel_Drag_MouseDown;
 			// 
 			// checkBox_Place
 			// 
@@ -103,14 +116,14 @@
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			Controls.Add(groupBox_Move);
+			Controls.Add(groupBox_MouseMove);
 			Name = "MouseMoveBlock";
 			Padding = new Padding(3);
 			Size = new Size(125, 120);
 			((System.ComponentModel.ISupportInitialize)numericUpDown_X).EndInit();
 			((System.ComponentModel.ISupportInitialize)numericUpDown_Y).EndInit();
-			groupBox_Move.ResumeLayout(false);
-			groupBox_Move.PerformLayout();
+			groupBox_MouseMove.ResumeLayout(false);
+			groupBox_MouseMove.PerformLayout();
 			ResumeLayout(false);
 		}
 
@@ -120,7 +133,8 @@
 		private NumericUpDown numericUpDown_Y;
 		private Label label1;
 		private Label label2;
-		private GroupBox groupBox_Move;
+		private GroupBox groupBox_MouseMove;
 		private CheckBox checkBox_Place;
+		private Panel panel_Drag;
 	}
 }

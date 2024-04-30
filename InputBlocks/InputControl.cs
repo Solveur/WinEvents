@@ -3,10 +3,10 @@
 	using System.Windows.Forms;
 	using SendInput;
 
-	public partial class InputControl : UserControl
+	public partial class InputBlock : UserControl
 	{
 		public virtual Input Input { get; }
-		public InputControl()
+		public InputBlock()
 		{
 			InitializeComponent();
 		}

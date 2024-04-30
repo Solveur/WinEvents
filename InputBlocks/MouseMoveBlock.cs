@@ -4,7 +4,7 @@
 	using System.Windows.Forms;
 	using SendInput;
 
-	public partial class MouseMoveBlock : InputControl
+	public partial class MouseMoveBlock : InputBlock
 	{
 		public override Input Input
 		{
@@ -32,6 +32,16 @@
 		public MouseMoveBlock()
 		{
 			InitializeComponent();
+		}
+
+		private void panel_Drag_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (e.Button != MouseButtons.Left)
+				return;
+
+			Visible = false;
+			Parent?.DoDragDrop(this, DragDropEffects.Move);
+			Visible = true;
 		}
 	}
 }
