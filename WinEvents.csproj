@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>WinExe</OutputType>
+        <OutputType>Exe</OutputType>
         <TargetFramework>net8.0-windows</TargetFramework>
         <Nullable>enable</Nullable>
         <UseWindowsForms>true</UseWindowsForms>
@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="InputBlocks\MouseUpBlock.cs">
+      <Compile Update="InputQueueForm\InputBlocks\MouseUpBlock.cs">
         <SubType>UserControl</SubType>
       </Compile>
       <Compile Update="Properties\Resources.Designer.cs">

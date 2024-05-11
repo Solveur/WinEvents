@@ -3,12 +3,12 @@
 	using System;
 	using SendInput;
 
-	public partial class MouseUpBlock : InputBlock
+	public partial class MouseDownBlock : InputBlock
 	{
-		private MouseFlags button = MouseFlags.LeftUp;
+		private MouseFlags button = MouseFlags.LeftDown;
 		private int mouseData = 0;
 
-		public override Input Input
+		public override Input[] Input
 		{
 			get
 			{
@@ -21,11 +21,11 @@
 					Time = 0,
 					ExtraInfo = WinAPI.GetMessageExtraInfo(),
 				};
-				return new(input);
+				return [new(input)];
 			}
 		}
 
-		public MouseUpBlock()
+		public MouseDownBlock()
 		{
 			InitializeComponent();
 		}
@@ -33,26 +33,26 @@
 		private void RadioButton_LMB_CheckedChanged(object sender, EventArgs e)
 		{
 			if (radioButton_LMB.Checked)
-				button = MouseFlags.LeftUp;
+				button = MouseFlags.LeftDown;
 		}
 
 		private void RadioButton_MMB_CheckedChanged(object sender, EventArgs e)
 		{
 			if (radioButton_MMB.Checked)
-				button = MouseFlags.MiddleUp;
+				button = MouseFlags.MiddleDown;
 		}
 
 		private void RadioButton_RMB_CheckedChanged(object sender, EventArgs e)
 		{
 			if (radioButton_RMB.Checked)
-				button = MouseFlags.RightUp;
+				button = MouseFlags.RightDown;
 		}
 
 		private void RadioButton_MB4_CheckedChanged(object sender, EventArgs e)
 		{
 			if (radioButton_MB4.Checked)
 			{
-				button = MouseFlags.XUp;
+				button = MouseFlags.XDown;
 				mouseData = 0x0001;
 			}
 			else
@@ -64,21 +64,11 @@
 		{
 			if (radioButton_MB5.Checked)
 			{
-				button = MouseFlags.XUp;
+				button = MouseFlags.XDown;
 				mouseData = 0x0002;
 			}
 			else
 				mouseData = 0;
-		}
-
-		private void panel_Drag_MouseDown(object sender, MouseEventArgs e)
-		{
-			if (e.Button != MouseButtons.Left)
-				return;
-
-			Visible = false;
-			Parent?.DoDragDrop(this, DragDropEffects.Move);
-			Visible = true;
 		}
 	}
 }

@@ -63,6 +63,16 @@ namespace WinEvents.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _115746 {
+            get {
+                object obj = ResourceManager.GetObject("115746", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _1714463_200 {
             get {
                 object obj = ResourceManager.GetObject("1714463-200", resourceCulture);
@@ -76,6 +86,27 @@ namespace WinEvents.Properties {
         internal static System.Drawing.Bitmap _175081 {
             get {
                 object obj = ResourceManager.GetObject("175081", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _2911230 {
+            get {
+                object obj = ResourceManager.GetObject("2911230", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gratis_png_puntero_del_mouse_de_computadora_apuntar_y_hacer_clic_en_el_cursor_mouse_de_computadora {
+            get {
+                object obj = ResourceManager.GetObject("gratis-png-puntero-del-mouse-de-computadora-apuntar-y-hacer-clic-en-el-cursor-mou" +
+                        "se-de-computadora", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -116,6 +147,16 @@ namespace WinEvents.Properties {
         internal static System.Drawing.Bitmap pngtree_rounded_flat_vector_icon_of_a_red_trash_can_vector_picture_image_9721363 {
             get {
                 object obj = ResourceManager.GetObject("pngtree-rounded-flat-vector-icon-of-a-red-trash-can-vector-picture-image_9721363", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap text_icon_vector {
+            get {
+                object obj = ResourceManager.GetObject("text-icon-vector", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

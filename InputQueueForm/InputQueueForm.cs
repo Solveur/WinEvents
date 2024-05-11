@@ -1,13 +1,9 @@
 ﻿namespace WinEvents
 {
 	using System;
-	using System.Collections.Generic;
-	using System.ComponentModel;
 	using System.Data;
 	using System.Drawing;
 	using System.Linq;
-	using System.Text;
-	using System.Threading.Tasks;
 	using System.Windows.Forms;
 	using SendInput;
 	using WinEvents.InputBlocks;
@@ -37,7 +33,6 @@
 			FlowLayoutPanel? destination = sender as FlowLayoutPanel;
 			InputBlock? child = GetInputBlock(e.Data);
 
-
 			placeholder.Size = child?.Size ?? new(5, 120);
 			destination?.Controls.Add(placeholder);
 		}
@@ -52,7 +47,7 @@
 
 
 			Control? childOnDragPoint = destination?.GetChildAtPoint(containerCursorPosition);
-			int index = destination?.Controls.GetChildIndex(childOnDragPoint, false) ?? 0;
+			int index = destination?.Controls.GetChildIndex(childOnDragPoint!, false) ?? 0;
 
 			destination?.Controls.SetChildIndex(placeholder, index);
 		}
@@ -73,7 +68,7 @@
 			// Get index of block on drop point
 			Point pointOfDrop = destination.PointToClient(new Point(e.X, e.Y));
 			Control? childOnDropPoint = destination?.GetChildAtPoint(pointOfDrop);
-			int index = destination?.Controls.GetChildIndex(childOnDropPoint, false) ?? 0;
+			int index = destination?.Controls.GetChildIndex(childOnDropPoint!, false) ?? 0;
 
 			// Place daragged block on drop point
 			destination?.Controls.Add(draggedChild);
@@ -127,7 +122,12 @@
 			if (e.Button != MouseButtons.Left)
 				return;
 
-			// Key up
+			KeyDownBlock newKeyDown = new()
+			{
+				ContextMenuStrip = contextMenuStrip_Delete
+			};
+			DoDragDrop(newKeyDown, DragDropEffects.All);
+			newKeyDown.Focus();
 		}
 
 		private void KeyUpGenerator_MouseDown(object sender, MouseEventArgs e)
@@ -135,7 +135,25 @@
 			if (e.Button != MouseButtons.Left)
 				return;
 
-			// Key down
+			KeyUpBlock newKeyUp = new()
+			{
+				ContextMenuStrip = contextMenuStrip_Delete
+			};
+			DoDragDrop(newKeyUp, DragDropEffects.All);
+			newKeyUp.Focus();
+		}
+
+		private void StringInputGenerator_MouseDown(object sender, MouseEventArgs e)
+		{
+				if (e.Button != MouseButtons.Left)
+				return;
+
+			StringInputBlock newStringInput = new()
+			{
+				ContextMenuStrip = contextMenuStrip_Delete
+			};
+			DoDragDrop(newStringInput, DragDropEffects.All);
+			newStringInput.Focus();
 		}
 
 		private void Panel_Delete_DragEnter(object sender, DragEventArgs e)
@@ -151,8 +169,8 @@
 
 		private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			ToolStripItem? toolStrip = sender as ToolStripItem;
-			ContextMenuStrip? contextMenu = toolStrip?.Owner as ContextMenuStrip;
+			ToolStripItem? deleteButton = sender as ToolStripItem;
+			ContextMenuStrip? contextMenu = deleteButton?.Owner as ContextMenuStrip;
 			InputBlock? block = contextMenu?.SourceControl as InputBlock;
 
 			block?.Dispose();
@@ -167,18 +185,19 @@
 			InputBlock? maybeMouseDown = data.GetData(typeof(MouseDownBlock)) as MouseDownBlock;
 			InputBlock? maybeMouseUp = data.GetData(typeof(MouseUpBlock)) as MouseUpBlock;
 			InputBlock? maybeKeyDown = data.GetData(typeof(KeyDownBlock)) as KeyDownBlock;
-			//InputBlock? maybeKeyUp = data.GetData(typeof(KeyUpBlock)) as KeyUpBlock;
+			InputBlock? maybeKeyUp = data.GetData(typeof(KeyUpBlock)) as KeyUpBlock;
+			InputBlock? maybeStringInput = data.GetData(typeof(StringInputBlock)) as StringInputBlock;
 
-			return maybeMouseDown ?? maybeMouseMove ?? maybeMouseUp ?? maybeKeyDown;
+			return maybeMouseDown ?? maybeMouseMove ?? maybeMouseUp ?? maybeKeyDown ?? maybeKeyUp ?? maybeStringInput;
 		}
 
 		private static Input[] GetInputs(Control.ControlCollection collection)
 		{
-			return [
-				.. collection
+			return collection
 				.OfType<InputBlock>()
 				.Cast<InputBlock>()
-				.Select(con => con.Input)];
+				.Select(block => block.Input)
+				.Aggregate((Input[])[], (a, b) => [.. a, .. b]);
 		}
 	}
 }

@@ -3,10 +3,11 @@
 	using System;
 	using System.Windows.Forms;
 	using SendInput;
+	using System.Diagnostics;
 
 	public partial class MouseMoveBlock : InputBlock
 	{
-		public override Input Input
+		public override Input[] Input
 		{
 			get
 			{
@@ -25,23 +26,17 @@
 					Time = 0,
 					ExtraInfo = WinAPI.GetMessageExtraInfo()
 				};
-				return new Input(input);
+				return [new(input)];
 			}
 		}
+
+		ToolTip tt;
 
 		public MouseMoveBlock()
 		{
 			InitializeComponent();
-		}
-
-		private void panel_Drag_MouseDown(object sender, MouseEventArgs e)
-		{
-			if (e.Button != MouseButtons.Left)
-				return;
-
-			Visible = false;
-			Parent?.DoDragDrop(this, DragDropEffects.Move);
-			Visible = true;
+			tt = new();
+			tt.SetToolTip(checkBox_Place, "Check if you want to place mouse cursor in specified coordinates, instead of moving it.");
 		}
 	}
 }

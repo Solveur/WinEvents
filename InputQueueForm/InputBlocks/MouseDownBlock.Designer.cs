@@ -1,6 +1,6 @@
 ﻿namespace WinEvents.InputBlocks
 {
-	partial class MouseUpBlock
+	partial class MouseDownBlock
 	{
 		/// <summary> 
 		/// Обязательная переменная конструктора.
@@ -28,41 +28,41 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			groupBox_MouseUp = new GroupBox();
+			groupBox_MouseDown = new GroupBox();
 			panel_Drag = new Panel();
 			radioButton_RMB = new RadioButton();
 			radioButton_MMB = new RadioButton();
 			radioButton_MB5 = new RadioButton();
 			radioButton_MB4 = new RadioButton();
 			radioButton_LMB = new RadioButton();
-			groupBox_MouseUp.SuspendLayout();
+			groupBox_MouseDown.SuspendLayout();
 			SuspendLayout();
 			// 
-			// groupBox_MouseUp
+			// groupBox_MouseDown
 			// 
-			groupBox_MouseUp.Controls.Add(panel_Drag);
-			groupBox_MouseUp.Controls.Add(radioButton_RMB);
-			groupBox_MouseUp.Controls.Add(radioButton_MMB);
-			groupBox_MouseUp.Controls.Add(radioButton_MB5);
-			groupBox_MouseUp.Controls.Add(radioButton_MB4);
-			groupBox_MouseUp.Controls.Add(radioButton_LMB);
-			groupBox_MouseUp.Location = new Point(6, 6);
-			groupBox_MouseUp.Name = "groupBox_MouseUp";
-			groupBox_MouseUp.Size = new Size(129, 108);
-			groupBox_MouseUp.TabIndex = 0;
-			groupBox_MouseUp.TabStop = false;
-			groupBox_MouseUp.Text = "Mouse up";
+			groupBox_MouseDown.Controls.Add(panel_Drag);
+			groupBox_MouseDown.Controls.Add(radioButton_RMB);
+			groupBox_MouseDown.Controls.Add(radioButton_MMB);
+			groupBox_MouseDown.Controls.Add(radioButton_MB5);
+			groupBox_MouseDown.Controls.Add(radioButton_MB4);
+			groupBox_MouseDown.Controls.Add(radioButton_LMB);
+			groupBox_MouseDown.Location = new Point(6, 6);
+			groupBox_MouseDown.Name = "groupBox_MouseDown";
+			groupBox_MouseDown.Size = new Size(129, 108);
+			groupBox_MouseDown.TabIndex = 0;
+			groupBox_MouseDown.TabStop = false;
+			groupBox_MouseDown.Text = "Mouse down";
 			// 
 			// panel_Drag
 			// 
 			panel_Drag.AllowDrop = true;
 			panel_Drag.BackColor = SystemColors.ControlLight;
 			panel_Drag.Cursor = Cursors.SizeAll;
-			panel_Drag.Location = new Point(62, 72);
+			panel_Drag.Location = new Point(66, 72);
 			panel_Drag.Name = "panel_Drag";
-			panel_Drag.Size = new Size(61, 30);
+			panel_Drag.Size = new Size(57, 30);
 			panel_Drag.TabIndex = 1;
-			panel_Drag.MouseDown += panel_Drag_MouseDown;
+			panel_Drag.MouseDown += Panel_Drag_MouseDown;
 			// 
 			// radioButton_RMB
 			// 
@@ -121,23 +121,22 @@
 			radioButton_LMB.UseVisualStyleBackColor = true;
 			radioButton_LMB.CheckedChanged += RadioButton_LMB_CheckedChanged;
 			// 
-			// MouseUpBlock
+			// MouseDownBlock
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			Controls.Add(groupBox_MouseUp);
+			Controls.Add(groupBox_MouseDown);
 			MinimumSize = new Size(20, 120);
-			Name = "MouseUpBlock";
-			Padding = new Padding(3);
+			Name = "MouseDownBlock";
 			Size = new Size(141, 120);
-			groupBox_MouseUp.ResumeLayout(false);
-			groupBox_MouseUp.PerformLayout();
+			groupBox_MouseDown.ResumeLayout(false);
+			groupBox_MouseDown.PerformLayout();
 			ResumeLayout(false);
 		}
 
 		#endregion
 
-		private GroupBox groupBox_MouseUp;
+		private GroupBox groupBox_MouseDown;
 		private RadioButton radioButton_RMB;
 		private RadioButton radioButton_MMB;
 		private RadioButton radioButton_MB4;

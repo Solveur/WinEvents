@@ -100,7 +100,7 @@
 			panel_Drag.Name = "panel_Drag";
 			panel_Drag.Size = new Size(41, 23);
 			panel_Drag.TabIndex = 6;
-			panel_Drag.MouseDown += panel_Drag_MouseDown;
+			panel_Drag.MouseDown += Panel_Drag_MouseDown;
 			// 
 			// checkBox_Place
 			// 

@@ -1,6 +1,6 @@
 ﻿namespace WinEvents
 {
-	partial class KeyDownBlock
+	partial class InputBlock
 	{
 		/// <summary> 
 		/// Обязательная переменная конструктора.
@@ -28,31 +28,22 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			groupBox_KeyDown = new GroupBox();
 			SuspendLayout();
 			// 
-			// groupBox_KeyDown
-			// 
-			groupBox_KeyDown.Location = new Point(6, 6);
-			groupBox_KeyDown.Name = "groupBox_KeyDown";
-			groupBox_KeyDown.Size = new Size(156, 108);
-			groupBox_KeyDown.TabIndex = 0;
-			groupBox_KeyDown.TabStop = false;
-			groupBox_KeyDown.Text = "Key down";
-			// 
-			// KeyDownBlock
+			// InputBlock
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			Controls.Add(groupBox_KeyDown);
-			Name = "KeyDownBlock";
+			AutoSize = true;
+			AutoSizeMode = AutoSizeMode.GrowAndShrink;
+			MaximumSize = new Size(0, 120);
+			MinimumSize = new Size(20, 120);
+			Name = "InputBlock";
 			Padding = new Padding(3);
-			Size = new Size(168, 120);
+			Size = new Size(20, 120);
 			ResumeLayout(false);
 		}
 
 		#endregion
-
-		private GroupBox groupBox_KeyDown;
 	}
 }

@@ -38,6 +38,7 @@
 			contextMenuStrip_Delete = new ContextMenuStrip(components);
 			deleteToolStripMenuItem = new ToolStripMenuItem();
 			panel_Delete = new Panel();
+			panel_StringInputGenerator = new Panel();
 			contextMenuStrip_Delete.SuspendLayout();
 			SuspendLayout();
 			// 
@@ -88,7 +89,7 @@
 			// panel_MouseUpGenerator
 			// 
 			panel_MouseUpGenerator.BackColor = Color.White;
-			panel_MouseUpGenerator.BackgroundImage = Properties.Resources.images;
+			panel_MouseUpGenerator.BackgroundImage = Properties.Resources._115746;
 			panel_MouseUpGenerator.BackgroundImageLayout = ImageLayout.Zoom;
 			panel_MouseUpGenerator.Cursor = Cursors.SizeAll;
 			panel_MouseUpGenerator.Location = new Point(124, 12);
@@ -144,11 +145,24 @@
 			panel_Delete.DragDrop += Panel_Delete_DragDrop;
 			panel_Delete.DragEnter += Panel_Delete_DragEnter;
 			// 
+			// panel_StringInputGenerator
+			// 
+			panel_StringInputGenerator.AllowDrop = true;
+			panel_StringInputGenerator.BackgroundImage = Properties.Resources._2911230;
+			panel_StringInputGenerator.BackgroundImageLayout = ImageLayout.Zoom;
+			panel_StringInputGenerator.Cursor = Cursors.SizeAll;
+			panel_StringInputGenerator.Location = new Point(292, 12);
+			panel_StringInputGenerator.Name = "panel_StringInputGenerator";
+			panel_StringInputGenerator.Size = new Size(50, 50);
+			panel_StringInputGenerator.TabIndex = 5;
+			panel_StringInputGenerator.MouseDown += StringInputGenerator_MouseDown;
+			// 
 			// InputQueueForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(800, 242);
+			Controls.Add(panel_StringInputGenerator);
 			Controls.Add(panel_Delete);
 			Controls.Add(panel_KeyUpGenerator);
 			Controls.Add(panel_KeyDownGenerator);
@@ -174,5 +188,6 @@
 		private ContextMenuStrip contextMenuStrip_Delete;
 		private ToolStripMenuItem deleteToolStripMenuItem;
 		private Panel panel_Delete;
+		private Panel panel_StringInputGenerator;
 	}
 }
