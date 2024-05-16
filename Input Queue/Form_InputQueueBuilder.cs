@@ -6,9 +6,8 @@
 	using System.Linq;
 	using System.Windows.Forms;
 	using SendInput;
-	using WinEvents.InputBlocks;
 
-	public partial class InputQueueForm : Form
+	public partial class Form_InputQueueBuilder : Form
 	{
 		private readonly DragPlaceholderBlock placeholder = new();
 		public Input[] Inputs
@@ -16,7 +15,7 @@
 			get => GetInputs(flowLayoutPanel_InputQueue.Controls);
 		}
 
-		public InputQueueForm()
+		public Form_InputQueueBuilder()
 		{
 			InitializeComponent();
 			ToolTip tt = new();
@@ -117,6 +116,19 @@
 			newMouseUp.Focus();
 		}
 
+		private void MouseWheelGenerator_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (e.Button != MouseButtons.Left)
+				return;
+
+			MouseWheelBlock newMouseWheel = new()
+			{
+				ContextMenuStrip = contextMenuStrip_Delete
+			};
+			DoDragDrop(newMouseWheel, DragDropEffects.All);
+			newMouseWheel.Focus();
+		}
+
 		private void KeyDownGenerator_MouseDown(object sender, MouseEventArgs e)
 		{
 			if (e.Button != MouseButtons.Left)
@@ -145,7 +157,7 @@
 
 		private void StringInputGenerator_MouseDown(object sender, MouseEventArgs e)
 		{
-				if (e.Button != MouseButtons.Left)
+			if (e.Button != MouseButtons.Left)
 				return;
 
 			StringInputBlock newStringInput = new()

@@ -1,6 +1,6 @@
 ﻿namespace WinEvents
 {
-	partial class MainForm
+	partial class Form_Main
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -29,9 +29,7 @@
 		private void InitializeComponent()
 		{
 			flowLayoutPanel_InputOverrides = new FlowLayoutPanel();
-			inputOverride1 = new InputOverride();
 			button_AddOverride = new Button();
-			button1 = new Button();
 			flowLayoutPanel_InputOverrides.SuspendLayout();
 			SuspendLayout();
 			// 
@@ -39,7 +37,6 @@
 			// 
 			flowLayoutPanel_InputOverrides.AutoScroll = true;
 			flowLayoutPanel_InputOverrides.BackColor = SystemColors.Control;
-			flowLayoutPanel_InputOverrides.Controls.Add(inputOverride1);
 			flowLayoutPanel_InputOverrides.Controls.Add(button_AddOverride);
 			flowLayoutPanel_InputOverrides.Dock = DockStyle.Left;
 			flowLayoutPanel_InputOverrides.Location = new Point(0, 0);
@@ -47,20 +44,12 @@
 			flowLayoutPanel_InputOverrides.MaximumSize = new Size(420, 0);
 			flowLayoutPanel_InputOverrides.Name = "flowLayoutPanel_InputOverrides";
 			flowLayoutPanel_InputOverrides.Padding = new Padding(5, 5, 0, 0);
-			flowLayoutPanel_InputOverrides.Size = new Size(383, 631);
+			flowLayoutPanel_InputOverrides.Size = new Size(389, 631);
 			flowLayoutPanel_InputOverrides.TabIndex = 0;
-			// 
-			// inputOverride1
-			// 
-			inputOverride1.Location = new Point(5, 5);
-			inputOverride1.Margin = new Padding(0);
-			inputOverride1.Name = "inputOverride1";
-			inputOverride1.Size = new Size(360, 85);
-			inputOverride1.TabIndex = 0;
 			// 
 			// button_AddOverride
 			// 
-			button_AddOverride.Location = new Point(7, 93);
+			button_AddOverride.Location = new Point(7, 8);
 			button_AddOverride.Margin = new Padding(2, 3, 3, 3);
 			button_AddOverride.Name = "button_AddOverride";
 			button_AddOverride.Size = new Size(356, 60);
@@ -69,23 +58,12 @@
 			button_AddOverride.UseVisualStyleBackColor = true;
 			button_AddOverride.Click += Button_AddOverride_Click;
 			// 
-			// button1
-			// 
-			button1.Location = new Point(416, 34);
-			button1.Name = "button1";
-			button1.Size = new Size(75, 23);
-			button1.TabIndex = 1;
-			button1.Text = "button1";
-			button1.UseVisualStyleBackColor = true;
-			button1.Click += Button1_Click;
-			// 
 			// MainForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			AutoScroll = true;
-			ClientSize = new Size(1026, 631);
-			Controls.Add(button1);
+			ClientSize = new Size(389, 631);
 			Controls.Add(flowLayoutPanel_InputOverrides);
 			Name = "MainForm";
 			Text = "Form1";
@@ -96,8 +74,6 @@
 		#endregion
 
 		private FlowLayoutPanel flowLayoutPanel_InputOverrides;
-		private InputOverride inputOverride1;
 		private Button button_AddOverride;
-		private Button button1;
 	}
 }

@@ -1,4 +1,4 @@
-﻿namespace WinEvents.InputBlocks
+﻿namespace WinEvents
 {
 	partial class MouseUpBlock
 	{

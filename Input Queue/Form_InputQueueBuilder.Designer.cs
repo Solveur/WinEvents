@@ -1,6 +1,6 @@
 ﻿namespace WinEvents
 {
-	partial class InputQueueForm
+	partial class Form_InputQueueBuilder
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -39,6 +39,7 @@
 			deleteToolStripMenuItem = new ToolStripMenuItem();
 			panel_Delete = new Panel();
 			panel_StringInputGenerator = new Panel();
+			panel_MouseWheelGenerator = new Panel();
 			contextMenuStrip_Delete.SuspendLayout();
 			SuspendLayout();
 			// 
@@ -103,7 +104,7 @@
 			panel_KeyDownGenerator.BackgroundImage = Properties.Resources.keyboard_key_down;
 			panel_KeyDownGenerator.BackgroundImageLayout = ImageLayout.Zoom;
 			panel_KeyDownGenerator.Cursor = Cursors.SizeAll;
-			panel_KeyDownGenerator.Location = new Point(180, 12);
+			panel_KeyDownGenerator.Location = new Point(236, 12);
 			panel_KeyDownGenerator.Name = "panel_KeyDownGenerator";
 			panel_KeyDownGenerator.Size = new Size(50, 50);
 			panel_KeyDownGenerator.TabIndex = 3;
@@ -114,7 +115,7 @@
 			panel_KeyUpGenerator.BackgroundImage = Properties.Resources.keyboard_key_up;
 			panel_KeyUpGenerator.BackgroundImageLayout = ImageLayout.Zoom;
 			panel_KeyUpGenerator.Cursor = Cursors.SizeAll;
-			panel_KeyUpGenerator.Location = new Point(236, 12);
+			panel_KeyUpGenerator.Location = new Point(292, 12);
 			panel_KeyUpGenerator.Name = "panel_KeyUpGenerator";
 			panel_KeyUpGenerator.Size = new Size(50, 50);
 			panel_KeyUpGenerator.TabIndex = 3;
@@ -151,13 +152,25 @@
 			panel_StringInputGenerator.BackgroundImage = Properties.Resources._2911230;
 			panel_StringInputGenerator.BackgroundImageLayout = ImageLayout.Zoom;
 			panel_StringInputGenerator.Cursor = Cursors.SizeAll;
-			panel_StringInputGenerator.Location = new Point(292, 12);
+			panel_StringInputGenerator.Location = new Point(348, 12);
 			panel_StringInputGenerator.Name = "panel_StringInputGenerator";
 			panel_StringInputGenerator.Size = new Size(50, 50);
 			panel_StringInputGenerator.TabIndex = 5;
 			panel_StringInputGenerator.MouseDown += StringInputGenerator_MouseDown;
 			// 
-			// InputQueueForm
+			// panel_MouseWheelGenerator
+			// 
+			panel_MouseWheelGenerator.BackColor = Color.White;
+			panel_MouseWheelGenerator.BackgroundImage = Properties.Resources.загруженное;
+			panel_MouseWheelGenerator.BackgroundImageLayout = ImageLayout.Zoom;
+			panel_MouseWheelGenerator.Cursor = Cursors.SizeAll;
+			panel_MouseWheelGenerator.Location = new Point(180, 12);
+			panel_MouseWheelGenerator.Name = "panel_MouseWheelGenerator";
+			panel_MouseWheelGenerator.Size = new Size(50, 50);
+			panel_MouseWheelGenerator.TabIndex = 3;
+			panel_MouseWheelGenerator.MouseDown += MouseWheelGenerator_MouseDown;
+			// 
+			// Form_InputQueueBuilder
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
@@ -166,11 +179,12 @@
 			Controls.Add(panel_Delete);
 			Controls.Add(panel_KeyUpGenerator);
 			Controls.Add(panel_KeyDownGenerator);
+			Controls.Add(panel_MouseWheelGenerator);
 			Controls.Add(panel_MouseUpGenerator);
 			Controls.Add(panel_MouseDownGenerator);
 			Controls.Add(panel_MouseMoveGenerator);
 			Controls.Add(flowLayoutPanel_InputQueue);
-			Name = "InputQueueForm";
+			Name = "Form_InputQueueBuilder";
 			Text = "Input queue builder";
 			contextMenuStrip_Delete.ResumeLayout(false);
 			ResumeLayout(false);
@@ -179,15 +193,16 @@
 
 		#endregion
 
-		private FlowLayoutPanel flowLayoutPanel_InputQueue;
 		private Panel panel_MouseMoveGenerator;
 		private Panel panel_MouseDownGenerator;
 		private Panel panel_MouseUpGenerator;
 		private Panel panel_KeyDownGenerator;
 		private Panel panel_KeyUpGenerator;
+		private Panel panel_StringInputGenerator;
+		private Panel panel_Delete;
+		private FlowLayoutPanel flowLayoutPanel_InputQueue;
 		private ContextMenuStrip contextMenuStrip_Delete;
 		private ToolStripMenuItem deleteToolStripMenuItem;
-		private Panel panel_Delete;
-		private Panel panel_StringInputGenerator;
+		private Panel panel_MouseWheelGenerator;
 	}
 }

@@ -11,7 +11,7 @@
 	using System.Windows.Forms;
 	using SendInput;
 
-	public partial class StringInputBlock : InputBlock
+	public partial class StringInputBlock : KeyboardInputBlock
 	{
 		public override Input[] Input
 		{

@@ -1,9 +1,8 @@
-﻿namespace WinEvents.InputBlocks
+﻿namespace WinEvents
 {
 	using System;
 	using System.Windows.Forms;
 	using SendInput;
-	using System.Diagnostics;
 
 	public partial class MouseMoveBlock : InputBlock
 	{

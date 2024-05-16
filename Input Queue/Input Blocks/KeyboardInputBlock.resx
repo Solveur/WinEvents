@@ -117,38 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="115746" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\115746.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="175081" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\175081.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pngtree-rounded-flat-vector-icon-of-a-red-trash-can-vector-picture-image_9721363" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pngtree-rounded-flat-vector-icon-of-a-red-trash-can-vector-picture-image_9721363.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="gratis-png-puntero-del-mouse-de-computadora-apuntar-y-hacer-clic-en-el-cursor-mouse-de-computadora" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gratis-png-puntero-del-mouse-de-computadora-apuntar-y-hacer-clic-en-el-cursor-mouse-de-computadora.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="keyboard_key_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\keyboard_key_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="images" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\images.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="1714463-200" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1714463-200.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="keyboard_key_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\keyboard_key_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="text-icon-vector" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\text-icon-vector.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="2911230" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\2911230.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="загруженное" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\загруженное.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

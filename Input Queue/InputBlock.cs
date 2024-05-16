@@ -4,11 +4,11 @@
 	using System.Windows.Forms;
 	using SendInput;
 
-	public partial class InputBlock : UserControl
+	[TypeDescriptionProvider(typeof(AbstractControlDescriptionProvider<InputBlock, UserControl>))]
+	public abstract partial class InputBlock : UserControl
 	{
-		[Flags]
 		[TypeConverter(typeof(KeysConverter))]
-		protected enum Keys
+		internal enum _Keys
 		{
 			None = 0x00,
 			Cancel = 0x03,

@@ -42,29 +42,30 @@
 			button_SelectInput.TabIndex = 0;
 			button_SelectInput.Text = "button_SelectInput";
 			button_SelectInput.UseVisualStyleBackColor = true;
-			button_SelectInput.Click += button1_Click;
+			button_SelectInput.Click += Button_SelecHook_Click;
 			// 
 			// button_SelectAction
 			// 
 			button_SelectAction.FlatStyle = FlatStyle.Flat;
-			button_SelectAction.Location = new Point(182, 3);
+			button_SelectAction.Location = new Point(180, 3);
 			button_SelectAction.Margin = new Padding(0, 3, 3, 3);
 			button_SelectAction.Name = "button_SelectAction";
 			button_SelectAction.Size = new Size(175, 79);
 			button_SelectAction.TabIndex = 0;
 			button_SelectAction.Text = "button_SelectAction";
 			button_SelectAction.UseVisualStyleBackColor = true;
-			button_SelectAction.Click += button2_Click;
+			button_SelectAction.Click += Button_SelectAction_Click;
 			// 
 			// InputOverride
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
+			BorderStyle = BorderStyle.FixedSingle;
 			Controls.Add(button_SelectAction);
 			Controls.Add(button_SelectInput);
 			Margin = new Padding(0);
 			Name = "InputOverride";
-			Size = new Size(360, 85);
+			Size = new Size(360, 87);
 			ResumeLayout(false);
 		}
 

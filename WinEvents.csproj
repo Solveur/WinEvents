@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="InputQueueForm\InputBlocks\MouseUpBlock.cs">
+      <Compile Update="Input Queue\Input Blocks\MouseUpBlock.cs">
         <SubType>UserControl</SubType>
       </Compile>
       <Compile Update="Properties\Resources.Designer.cs">
