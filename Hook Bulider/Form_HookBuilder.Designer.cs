@@ -54,6 +54,8 @@
 			groupBox_KeyboardAction = new GroupBox();
 			radioButton_KeyboardKeyUp = new RadioButton();
 			radioButton_KeyboardKeyDown = new RadioButton();
+			checkBox_BlockMousePropagation = new CheckBox();
+			checkBox_BlockKeyboardPropagation = new CheckBox();
 			tabControl1.SuspendLayout();
 			tabPage_MouseHookBuilder.SuspendLayout();
 			groupBox_MouseWheel.SuspendLayout();
@@ -77,6 +79,7 @@
 			// 
 			// tabPage_MouseHookBuilder
 			// 
+			tabPage_MouseHookBuilder.Controls.Add(checkBox_BlockMousePropagation);
 			tabPage_MouseHookBuilder.Controls.Add(groupBox_MouseWheel);
 			tabPage_MouseHookBuilder.Controls.Add(groupBox_MouseButton);
 			tabPage_MouseHookBuilder.Controls.Add(groupBox_MouseAction);
@@ -257,6 +260,7 @@
 			// 
 			// tabPage_KeyboardHookBuilder
 			// 
+			tabPage_KeyboardHookBuilder.Controls.Add(checkBox_BlockKeyboardPropagation);
 			tabPage_KeyboardHookBuilder.Controls.Add(groupBox_KeyboardKey);
 			tabPage_KeyboardHookBuilder.Controls.Add(groupBox_KeyboardAction);
 			tabPage_KeyboardHookBuilder.Location = new Point(4, 24);
@@ -279,7 +283,7 @@
 			groupBox_KeyboardKey.Size = new Size(145, 108);
 			groupBox_KeyboardKey.TabIndex = 2;
 			groupBox_KeyboardKey.TabStop = false;
-			groupBox_KeyboardKey.Text = "Key down";
+			groupBox_KeyboardKey.Text = "Key select";
 			// 
 			// checkBox_Win
 			// 
@@ -364,6 +368,26 @@
 			radioButton_KeyboardKeyDown.UseVisualStyleBackColor = true;
 			radioButton_KeyboardKeyDown.CheckedChanged += RadioButton_KeyboardKeyDown_CheckedChanged;
 			// 
+			// checkBox_BlockMousePropagation
+			// 
+			checkBox_BlockMousePropagation.AutoSize = true;
+			checkBox_BlockMousePropagation.Location = new Point(267, 154);
+			checkBox_BlockMousePropagation.Name = "checkBox_BlockMousePropagation";
+			checkBox_BlockMousePropagation.Size = new Size(129, 19);
+			checkBox_BlockMousePropagation.TabIndex = 3;
+			checkBox_BlockMousePropagation.Text = "Block original input";
+			checkBox_BlockMousePropagation.UseVisualStyleBackColor = true;
+			// 
+			// checkBox_BlockKeyboardPropagation
+			// 
+			checkBox_BlockKeyboardPropagation.AutoSize = true;
+			checkBox_BlockKeyboardPropagation.Location = new Point(8, 154);
+			checkBox_BlockKeyboardPropagation.Name = "checkBox_BlockKeyboardPropagation";
+			checkBox_BlockKeyboardPropagation.Size = new Size(129, 19);
+			checkBox_BlockKeyboardPropagation.TabIndex = 4;
+			checkBox_BlockKeyboardPropagation.Text = "Block original input";
+			checkBox_BlockKeyboardPropagation.UseVisualStyleBackColor = true;
+			// 
 			// Form_HookBuilder
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -374,6 +398,7 @@
 			Text = "Hook Builder";
 			tabControl1.ResumeLayout(false);
 			tabPage_MouseHookBuilder.ResumeLayout(false);
+			tabPage_MouseHookBuilder.PerformLayout();
 			groupBox_MouseWheel.ResumeLayout(false);
 			groupBox_MouseWheel.PerformLayout();
 			groupBox_MouseButton.ResumeLayout(false);
@@ -381,6 +406,7 @@
 			groupBox_MouseAction.ResumeLayout(false);
 			groupBox_MouseAction.PerformLayout();
 			tabPage_KeyboardHookBuilder.ResumeLayout(false);
+			tabPage_KeyboardHookBuilder.PerformLayout();
 			groupBox_KeyboardKey.ResumeLayout(false);
 			groupBox_KeyboardKey.PerformLayout();
 			groupBox_KeyboardAction.ResumeLayout(false);
@@ -416,5 +442,7 @@
 		private CheckBox checkBox_Control;
 		private CheckBox checkBox_Shift;
 		private ComboBox comboBox_Key;
+		private CheckBox checkBox_BlockMousePropagation;
+		private CheckBox checkBox_BlockKeyboardPropagation;
 	}
 }

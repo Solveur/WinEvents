@@ -29,12 +29,14 @@
 					{
 						EventToCatch = _mouseEventToCatch,
 						ButtonToCatch = _buttonToCatch,
-						WheelDirection = _wheelDirection
+						WheelDirection = _wheelDirection,
+						BlockPropagation = checkBox_BlockMousePropagation.Checked
 					},
 					HookType.KeyboardLL => new ConditionalKeyboardHook()
 					{
 						EventToCatch = _keyboardEventToCatch,
 						KeyToCatch = (Keys?)comboBox_Key.SelectedItem ?? Keys.None,
+						BlockPropagation = checkBox_BlockKeyboardPropagation.Checked
 					},
 					_ => throw new NotImplementedException()
 				};
