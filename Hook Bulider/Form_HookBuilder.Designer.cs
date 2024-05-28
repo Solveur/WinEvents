@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			tabControl1 = new TabControl();
+			tabControl_Hook = new TabControl();
 			tabPage_MouseHookBuilder = new TabPage();
 			groupBox_MouseWheel = new GroupBox();
 			radioButton_MouseWheelDown = new RadioButton();
@@ -56,7 +56,7 @@
 			radioButton_KeyboardKeyDown = new RadioButton();
 			checkBox_BlockMousePropagation = new CheckBox();
 			checkBox_BlockKeyboardPropagation = new CheckBox();
-			tabControl1.SuspendLayout();
+			tabControl_Hook.SuspendLayout();
 			tabPage_MouseHookBuilder.SuspendLayout();
 			groupBox_MouseWheel.SuspendLayout();
 			groupBox_MouseButton.SuspendLayout();
@@ -68,14 +68,14 @@
 			// 
 			// tabControl1
 			// 
-			tabControl1.Controls.Add(tabPage_MouseHookBuilder);
-			tabControl1.Controls.Add(tabPage_KeyboardHookBuilder);
-			tabControl1.Dock = DockStyle.Fill;
-			tabControl1.Location = new Point(0, 0);
-			tabControl1.Name = "tabControl1";
-			tabControl1.SelectedIndex = 0;
-			tabControl1.Size = new Size(410, 209);
-			tabControl1.TabIndex = 0;
+			tabControl_Hook.Controls.Add(tabPage_MouseHookBuilder);
+			tabControl_Hook.Controls.Add(tabPage_KeyboardHookBuilder);
+			tabControl_Hook.Dock = DockStyle.Fill;
+			tabControl_Hook.Location = new Point(0, 0);
+			tabControl_Hook.Name = "tabControl1";
+			tabControl_Hook.SelectedIndex = 0;
+			tabControl_Hook.Size = new Size(410, 209);
+			tabControl_Hook.TabIndex = 0;
 			// 
 			// tabPage_MouseHookBuilder
 			// 
@@ -393,10 +393,10 @@
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			ClientSize = new Size(410, 209);
-			Controls.Add(tabControl1);
+			Controls.Add(tabControl_Hook);
 			Name = "Form_HookBuilder";
 			Text = "Hook Builder";
-			tabControl1.ResumeLayout(false);
+			tabControl_Hook.ResumeLayout(false);
 			tabPage_MouseHookBuilder.ResumeLayout(false);
 			tabPage_MouseHookBuilder.PerformLayout();
 			groupBox_MouseWheel.ResumeLayout(false);
@@ -416,7 +416,7 @@
 
 		#endregion
 
-		private TabControl tabControl1;
+		private TabControl tabControl_Hook;
 		private TabPage tabPage_MouseHookBuilder;
 		private TabPage tabPage_KeyboardHookBuilder;
 		private GroupBox groupBox_MouseWheel;

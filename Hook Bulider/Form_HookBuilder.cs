@@ -19,6 +19,19 @@
 
 		public MessageType KeyboardEventType => _keyboardEventToCatch;
 		public MouseHook.MouseEventType MouseEventType => _mouseEventToCatch;
+
+		public HookType HookType
+		{
+			get
+			{
+				return tabControl_Hook.SelectedIndex switch
+				{
+					0 => HookType.MouseLL,
+					1 => HookType.KeyboardLL,
+					_ => throw new NotImplementedException()
+				};
+			}
+		}
 		public Hook Hook
 		{
 			get
@@ -38,19 +51,6 @@
 						KeyToCatch = (Keys?)comboBox_Key.SelectedItem ?? Keys.None,
 						BlockPropagation = checkBox_BlockKeyboardPropagation.Checked
 					},
-					_ => throw new NotImplementedException()
-				};
-			}
-		}
-
-		public HookType HookType
-		{
-			get
-			{
-				return tabControl1.SelectedIndex switch
-				{
-					0 => HookType.MouseLL,
-					1 => HookType.KeyboardLL,
 					_ => throw new NotImplementedException()
 				};
 			}
